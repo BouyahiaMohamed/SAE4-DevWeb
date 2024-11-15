@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet"  href="style.css">
+    <link rel="icon" type="image/x-icon" href="../img/Favicon.png">
+    <title>Mission 3</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <button onclick="window.location.href='home.html'"> <img src="../img/maison.png" alt="home" class = "home"> </button>
+            <button onclick="window.location.href='mission1.html'"> Mission 1 </button>
+            <button onclick="window.location.href='mission2.html'"> Mission 2 </button>
+            <button onclick="window.location.href='mission3.html'"> Mission 3 </button>
+            <button onclick="window.location.href='conclusion.html'"> Conclusion </button>
+        </nav>
+    </header>
+
+    <div class="sommaire-contenu">
+        <aside>
+            <h2>Sommaire</h2>
+            <ul>
+                <li><a href="#1">Contexte</a></li>
+                <li><a href="#t1">Thème 1</a></li>
+                <li><a href="#t2">Thème 2</a></li>
+                <li><a href="#t3">Thème 3</a></li>
+                <li><a href="#t4">Thème 4</a></li>
+            </ul>
+        </aside>
+        <main>
+            <h1 class="center">Mission 3</h1>
+            <hr>
+            <br>
+            <h2 id="1">Contexte</h2>
+            <br>
+            <p>Cette mission se concentre sur l'analyse des données de KDou à l'aide du langage SQL. 
+                Nous avons utilisé plusieurs requêtes pour répondre à des questions stratégiques pour l'entreprise.
+            </p>
+            <br>
+    <section id="code">        
+    <h2 id="t1">
+        Thème 1 : Desserts / Boissons
+    </h2>
+    <br>
+    <p>
+        <strong>Indicateur 1 Énoncé :</strong> Combien y a-t-il des produits correspondants vendus 50€ ou plus ? On veut les connaître avec leur pays d'origine
+    </p>
+    <br>
+    <p>
+        <strong>Construction :</strong> Sélection des produits ayant pour catégorie "boisson" et "Pays", avec un prix supérieur à 50 €.
+    </p>
+    <br>
+    <pre><code>SELECT Produit.NomProd, Produit.PrixUnit, Fournisseur.Pays 
+FROM Fournisseur INNER JOIN Produit ON Fournisseur.NoFour =Produit.NoFour 
+WHERE (((Produit.PrixUnit)>50));</code></pre>
+    <br>
+    <p>
+        <strong>Résultat :</strong> on obtient une quinzaine de boissons
+        <br>
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">NomProd</th>
+                    <th scope="col">PrixUnit</th>
+                    <th scope="col">Pays</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Chang</th>
+                    <td>107,42 €</td>
+                    <td>Royaume-Uni</td>
+                </tr>
+                <tr>
+                    <th scope="row">Mishi Kobe Niku</th>
+                    <td>80,83 €</td>
+                    <td>Japon</td>
+                </tr>
+                <tr>
+                    <th scope="row">Carnavon Tigers</th>
+                    <td>52,08 €</td>
+                    <td>Australie</td>
+                </tr>
+                <tr>
+                    <th scope="row">Sir Rodney's Marmalade</th>
+                    <td>67,50 €</td>
+                    <td>Royaume-Uni</td>
+                </tr>
+                <tr>
+                    <th scope="row">Thüringer Rostbratwurst</th>
+                    <td>103,16 €</td>
+                    <td>Allemagne</td>
+                </tr>
+                <tr>
+                    <th scope="row">Steeleye Stout</th>
+                    <td>215,00 €</td>
+                    <td>États-Unis</td>
+                </tr>
+                <tr>
+                    <th scope="row">Côte de Blaye</th>
+                    <td>219,58 €</td>
+                    <td>France</td>
+                </tr>
+                <tr>
+                    <th scope="row">Tourtière crème forestière</th>
+                    <td>62,21 €</td>
+                    <td>Canada</td>
+                </tr>
+                <tr>
+                    <th scope="row">Camembert Pierrot</th>
+                    <td>54,57 €</td>
+                    <td>France</td>
+                </tr>
+                <tr>
+                    <th scope="row">Rhönbräu Klosterbier</th>
+                    <td>55,26 €</td>
+                    <td>Allemagne</td>
+                </tr>
+                <tr>
+                    <th scope="row">Bratislava Vodka</th>
+                    <td>320,00 €</td>
+                    <td>Royaume-Uni</td>
+                </tr>
+                <tr>
+                    <th scope="row">Pimm's jojo</th>
+                    <td>58,43 €</td>
+                    <td>Australie</td>
+                </tr>
+                <tr>
+                    <th scope="row">Jus Agava</th>
+                    <td>56,00 €</td>
+                    <td>États-Unis</td>
+                </tr>
+                <tr>
+                    <th scope="row">Jus Kiwina</th>
+                    <td>52,00 €</td>
+                    <td>Royaume-Uni</td>
+                </tr>
+                <tr>
+                    <th scope="row">Dea Surströmming</th>
+                    <td>120,00 €</td>
+                    <td>Suède</td>
+                </tr>
+            </tbody>
+        </table>
+    <br>
+    <br>
+    <p>
+        <strong>Indicateur 2 Énoncé :</strong> On veut le chiffre d'affaire généré par catégorie desserts ou catégorie.
+    </p>
+    <br>
+    <p>
+        <strong>Construction :</strong> Moyenne des prix pour les produits de catégorie "dessert".
+    </p>
+    <br>
+    <pre><code>SELECT Sum(([PrixUnitCli]*[QteCom])) AS [ChiffreD'affaire] 
+FROM (Categorie INNER JOIN Produit ON Categorie.CodeCateg = Produit.CodeCateg) INNER JOIN DetailCommande ON Produit.RefProd = DetailCommande.RefProd
+GROUP BY Categorie.CodeCateg HAVING (((Categorie.CodeCateg)=1 Or (Categorie.CodeCateg)=3));</code></pre>
+    <br>
+    <p>
+        <strong>Résultat :</strong> un bénéfice total de 567 636,45 €.
+    </p>
+    <br>
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">ChiffreD'affaire</th>
+                <th scope="col">NomCategégorie</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>360 309,75 €</td>
+                <th scope="row">Boissons</th>
+            </tr>
+            <tr>
+                <td>207 326,70 €</td>
+                <th scope="row">Desserts</th>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <br>
+    <br>
+    <h2 id="t2">
+        Thème 2 : L'offre de KDou
+    </h2>
+    <br>
+    <p>
+        <strong>Indicateur 1 Énoncé :</strong> Quels sont les pays qui ont une offre importante de produit ?
+    </p>
+    <br>
+    <p>
+        <strong>Construction :</strong> On fait la somme de tous les stocks des produits en les regroupant par les pays de leur fournisseur
+    </p>
+    <br>
+    <pre><code>SELECT Fournisseur.Pays, Sum(Produit.UniteStock) AS SommeDeUniteStock 
+FROM Fournisseur INNER JOIN Produit ON Fournisseur.NoFour = Produit.NoFour 
+GROUP BY Fournisseur.Pays
+ORDER BY 2 DESC;</code></pre>
+    <br>
+    <p>
+        <strong>Résultat :</strong> on obtient 21 Pays
+        <br>
+        <br>
+            <table>
+            <thead>
+                <tr>
+                    <th scope="col">Pays</th>
+                    <th scope="col">SommeDeU</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Allemagne</th>
+                    <td>53</td>
+                </tr>
+                <tr>
+                    <th scope="row">Royaume-Uni</th>
+                    <td>43</td>
+                </tr>
+                <tr>
+                    <th scope="row">France</th>
+                    <td>35</td>
+                </tr>
+                <tr>
+                    <th scope="row">États-Unis</th>
+                    <td>32</td>
+                </tr>
+                <tr>
+                    <th scope="row">Japon</th>
+                    <td>30</td>
+                </tr>
+                <tr>
+                    <th scope="row">Australie</th>
+                    <td>26</td>
+                </tr>
+                <tr>
+                    <th scope="row">Brésil</th>
+                    <td>25</td>
+                </tr>
+                <tr>
+                    <th scope="row">Canada</th>
+                    <td>25</td>
+                </tr>
+                <tr>
+                    <th scope="row">Australia</th>
+                    <td>20</td>
+                </tr>
+                <tr>
+                    <th scope="row">Finlande</th>
+                    <td>20</td>
+                </tr>
+                <tr>
+                    <th scope="row">Suède</th>
+                    <td>20</td>
+                </tr>
+                <tr>
+                    <th scope="row">Pays-Bas</th>
+                    <td>18</td>
+                </tr>
+                <tr>
+                    <th scope="row">Norvège</th>
+                    <td>17</td>
+                </tr>
+                <tr>
+                    <th scope="row">États Unis</th>
+                    <td>15</td>
+                </tr>
+                <tr>
+                    <th scope="row">Espagne</th>
+                    <td>15</td>
+                </tr>
+                <tr>
+                    <th scope="row">Suède</th>
+                    <td>14</td>
+                </tr>
+                <tr>
+                    <th scope="row">USA</th>
+                    <td>13</td>
+                </tr>
+                <tr>
+                    <th scope="row">Royaume Uni</th>
+                    <td>13</td>
+                </tr>
+                <tr>
+                    <th scope="row">Italie</th>
+                    <td>11</td>
+                </tr>
+                <tr>
+                    <th scope="row">Singapour</th>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <th scope="row">Danemark</th>
+                    <td>7</td>
+                </tr>
+            </tbody>
+        </table>
+    <br>
+    <p>
+        <strong>Indicateur 2 Énoncé :</strong> Combien y –a-t-il de produits non commandés par catégorie ? 
+    </p>
+    <br>
+    <p>
+        <strong>Construction :</strong> on affiche leur catégorie et on compte combien de fois chacune d'elle apparaisse avec la fonction COUNT
+    </p>
+    <br>
+    <pre><code>SELECT Categorie.NomCateg, Count(Produit.CodeCateg) AS CompteDeCodeCateg
+FROM Categorie INNER JOIN (Fournisseur INNER JOIN (Produit LEFT JOIN DetailCommande ON Produit.RefProd = DetailCommande.RefProd) ON Fournisseur.NoFour = Produit.NoFour) ON Categorie.CodeCateg = Produit.CodeCateg
+WHERE (((Produit.RefProd) Not In ([DetailCommande].[RefProd])))
+GROUP BY Produit.CodeCateg, Categorie.NomCateg
+ORDER BY Produit.CodeCateg;</code></pre>
+    <br>
+    <p>
+        <strong>Résultat :</strong> Il y a 5 produits
+    </p>
+    <br>
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">NomCateg</th>
+                <th scope="col">CompteDeCodeCateg</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">Boissons</th>
+                <td>27</td>
+            </tr>
+            <tr>
+                <th scope="row">Condiments</th>
+                <td>2</td>
+            </tr>
+            <tr>
+                <th scope="row">Desserts</th>
+                <td>3</td>
+            </tr>
+            <tr>
+                <th scope="row">Pâtes et céréales</th>
+                <td>2</td>
+            </tr>
+            <tr>
+                <th scope="row">Poissons et fruits de mer</th>
+                <td>2</td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <br>
+    <br>
+    <h2 id="t3">
+        Thème 3 : La provenance des produits 
+    </h2>
+    <br>
+    <p>
+        <strong>Indicateur 1 Énoncé :</strong> Quels fournisseurs vendent uniquement des boissons ou des desserts ?
+    </p>
+    <br>
+    <p>
+        <strong>Construction :</strong> il faut prendre la table des fournisseurs qui vendent des desserts ou des boissons qui ne sont pas dans la table des fournisseurs qui vendent d'autre catégorie de produit.
+        
+    </p>
+    <br>
+    <pre><code>
+SELECT DISTINCT Fournisseur.Societe
+FROM Fournisseur INNER JOIN (Categorie INNER JOIN Produit ON Categorie.CodeCateg = Produit.CodeCateg) ON Fournisseur.NoFour = Produit.NoFour
+WHERE Categorie.NomCateg in ("Boissons", "Desserts") AND Fournisseur.Societe NOT IN 
+    (SELECT DISTINCT Fournisseur.Societe
+    FROM Fournisseur INNER JOIN (Categorie INNER JOIN Produit ON
+    Categorie.CodeCateg = Produit.CodeCateg) ON Fournisseur.NoFour = Produit.NoFour
+    WHERE Categorie.NomCateg NOT in ("Boissons", "Desserts") );</code></pre>
+    <br>
+    <p>
+        <strong>Résultat :</strong> on obtient 11 Fournisseur
+        <br>
+        <br>
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">Société</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Aux joyeux ecclésiastiques</th>
+                </tr>
+                <tr>
+                    <th scope="row">Faro Madeiras</th>
+                </tr>
+                <tr>
+                    <th scope="row">Globalis</th>
+                </tr>
+                <tr>
+                    <th scope="row">Heli Süßwaren GmbH & Co. KG</th>
+                </tr>
+                <tr>
+                    <th scope="row">Karkki Oy</th>
+                </tr>
+                <tr>
+                    <th scope="row">Losad</th>
+                </tr>
+                <tr>
+                    <th scope="row">Perdigão</th>
+                </tr>
+                <tr>
+                    <th scope="row">Refrescos Americanas LTDA</th>
+                </tr>
+                <tr>
+                    <th scope="row">Specialty Biscuits, Ltd.</th>
+                </tr>
+                <tr>
+                    <th scope="row">Westpac Corporation</th>
+                </tr>
+                <tr>
+                    <th scope="row">Zaanse Snoepfabriek</th>
+                </tr>
+            </tbody>
+        </table>
+    <br>
+    <p>
+        <strong>Indicateur 2 Énoncé :</strong> Y en a-t-il qui vendent les deux boissons et desserts ? 
+    </p>
+    <br>
+    <p>
+        <strong>Construction :</strong> On prend la table des fournisseurs qui vendentdes desserts et qui sont aussi dans la table les fournisseurs qui vendent desboissons et enfin qui ne sont pas dans la table des fournisseurs qui vendent d'autrecatégorie de produit.
+        
+    </p>
+    <br>
+    <pre><code>
+SELECT DISTINCT Fournisseur.Societe
+FROM Fournisseur INNER JOIN (Categorie INNER JOIN Produit ONCategorie.CodeCateg = Produit.CodeCateg) ON Fournisseur.NoFour =Produit.NoFour
+WHERE Categorie.NomCateg = "Boissons" AND Fournisseur.Societe IN 
+    (SELECT DISTINCT Fournisseur.Societe
+    FROM Fournisseur INNER JOIN (Categorie INNER JOIN Produit ONCategorie.CodeCateg = Produit.CodeCateg) ON Fournisseur.NoFour =Produit.NoFour
+    WHERE Categorie.NomCateg = "Desserts")
+    AND Fournisseur.Societe NOT IN 
+    (SELECT DISTINCT Fournisseur.Societe
+    FROM Fournisseur INNER JOIN (Categorie INNER JOIN Produit ONCategorie.CodeCateg = Produit.CodeCateg) ON Fournisseur.NoFour =Produit.NoFour
+    WHERE Categorie.NomCateg NOT in ("Boissons", "Desserts") );</code></pre>
+    <br>
+    <p>
+        <strong>Résultat :</strong> Il y a 2 sociétées
+    </p>
+    <br>
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Société</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">Karkki Oy</th>
+            </tr>
+            <tr>
+                <th scope="row">Refrescos Americanas LTDA</th>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <br>
+    <br>
+    <h2 id="t4">
+        Thème 4 : La clientèle
+    </h2>
+    <br>
+    <p>
+        <strong>Indicateur 1 Énoncé :</strong> Certains clients n'ont jamais eu la remise la plus importante de 25%. Qui sont-ils ? 
+    </p>
+    <br>
+    <p>
+        <strong>Construction :</strong> on vérifie si la remise maximale du client est inférieure à 25%.
+        
+    </p>
+    <br>
+    <pre><code>SELECT DISTINCT Client.SocieteCli
+FROM Client INNER JOIN (Commande INNER JOIN (Produit INNER JOINDetailCommande ON Produit.RefProd = DetailCommande.RefProd) ONCommande.NoCom = DetailCommande.NoCom) ON Client.CodeCli =Commande.CodeCli
+GROUP BY Client.SocieteCli
+HAVING (((Max(DetailCommande.Remise)) &lt; 0.25));</code></pre>
+    <br>
+    <p>
+        <strong>Résultat : on obtient 1 Client</strong>
+        <br>
+        <br>
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">SocieteCli</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Chez Bouxou</th>
+                </tr>
+            </tbody>
+        </table>
+    <br>
+    <p>
+        <strong>Indicateur 2 Énoncé :</strong> Quels produits n'ont eu que des remises de 10% ou 20% ou pas de remise ? 
+    </p>
+    <br>
+    <p>
+        <strong>Construction :</strong> On effectue un HAVING avec plusieurs égalitées
+        
+    </p>
+    <br>
+    <pre><code>SELECT DISTINCT Produit.NomProd
+FROM Produit INNER JOIN DetailCommande ON Produit.RefProd =DetailCommande.RefProd
+GROUP BY Produit.NomProd
+HAVING (((Max(DetailCommande.Remise))=0 Or (Max(DetailCommande.Remise))=0.1 Or (Max(DetailCommande.Remise))=0.2));    </code></pre>
+    <br>
+    <p>
+        <strong>Résultat :</strong> On obtient 4 produits
+    </p>
+    <br>
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">NomProd</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">Aniseed Syrup</th>
+            </tr>
+            <tr>
+                <th scope="row">Gravad lax</th>
+            </tr>
+            <tr>
+                <th scope="row">Louisiana Fiery Hot Pepper Sauce</th>
+            </tr>
+            <tr>
+                <th scope="row">Röd Kaviar</th>
+            </tr>
+        </tbody>
+    </table>    
+    </section>
+        </main>
+    </div>
+
+    <footer>
+        <p>© 2024 - SAE S1.04</p>
+        <p>Équipe : Mohamed, Julien, Romain, Enzo</p>
+        <a id="contact" href="contact.html"><p>Nous contacter</p></a>
+    </footer>
+
+</body>
+</html>

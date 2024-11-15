@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet"  href="style.css">
+    <link rel="icon" type="image/x-icon" href="../img/Favicon.png">
+    <title>Mission 1</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <button onclick="window.location.href='home.html'"> <img src="../img/maison.png" alt="home" class = "home"> </button>
+            <button onclick="window.location.href='mission1.html'"> Mission 1 </button>
+            <button onclick="window.location.href='mission2.html'"> Mission 2 </button>
+            <button onclick="window.location.href='mission3.html'"> Mission 3 </button>
+            <button onclick="window.location.href='conclusion.html'"> Conclusion </button>
+        </nav>
+    </header>
+
+    <div class="sommaire-contenu">
+        <aside>
+            <h2>Sommaire</h2>
+            <ul>
+                <li><a href="#1">Contexte</a></li>
+                <li><a href="#2">Bilan structuré</a>
+                    <ul>
+                        <li><a href="#2_1">Qu'est-ce que le QBE ?</a></li>
+                        <li><a href="#2_2">Exemples</a></li>
+                        <li><a href="#2_3">Un problème se pose</a></li>
+                    </ul>
+                </li>
+                <li><a href="#3">Conclusion</a></li>
+            </ul>
+        </aside>
+        <main>
+            <h1 id="1" class="center">Mission 1</h1>
+            <hr>
+            <br>
+            <h2>Contexte</h2>
+            <br>
+            <p>KDOU nous a fourni une base de données avec plusieurs tables :</p>
+            <ul>
+                <li>Fournisseur</li>
+                <li>Produit</li>
+                <li>Catégorie</li>
+                <li>Clientèle</li>
+                <li>Commande</li>
+                <li id="2">Détails Commande</li>
+            </ul>
+            <p >Notre équipe s'est donc interresé à cette table. C'était une phase de découverte. Nous avons donc fait quelques requêtess pour nous familiariser avec cette base de données.</p>
+            <br>
+            <h2>Bilan structuré</h2>
+            <br>
+            <p>Nos premiers pas dans l'analyse de cette base de données été de repérer les clés primaires et les clés étrangères des tables, nous avons donc extrait ces informations:</p>
+            <p>Ensuite, nous avons créé et executé des requêtes avec le <strong>QBE</strong></p>
+            <br>
+            <table>
+                <thead>
+                <tr>
+                    <th scope="col">Tables</th>
+                    <th scope="col">Clé primaire</th>
+                    <th scope="col">Clé étrangère </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">Fournisseur</th>
+                    <td>N° fournisseur</td>
+                    <td>aucune clé étrangère</td>
+                </tr>
+                <tr>
+                    <th scope="row">Produit </th>
+                    <td>Réf produit</td>
+                    <td>N° fournisseur</td>
+                </tr>
+                <tr>
+                    <th scope="row">Catégorie </th>
+                    <td>Code catégorie</td>
+                    <td>aucune clé étrangère</td>
+                </tr>
+                <tr>
+                    <th scope="row">Clientèle </th>
+                    <td>Code client</td>
+                    <td>aucune clé étrangère</td>
+                </tr>
+                <tr>
+                    <th scope="row">Commande </th>
+                    <td>N° commande</td>
+                    <td id="2_1">Code Client</td>
+                </tr>
+                <tr>
+                    <th scope="row">Détails Commande  </th>
+                    <td>N° commande</td>
+                    <td > Réf produit</td>
+                </tr>
+                </tbody>
+            </table>
+            <h3 >Qu'est-ce que le QBE ?</h3>
+            <p>Le QBE, ou Query By Example est un type d'interface utilisateur permetant de faire des requêtes dans une base de données sans écrire de code (le code en langage SQL est généré). Cette outil offre une simplicité d'utilisation qui nous a permi de nous concentrer sur la base de données et non sur la syntaxe des requêtes SQL.</p>
+            <p>Plusieurs applications nous permettent de faire du QBE, nous avons choisi l'application Access, développée par Microsoft.</p>
+            <br>
+            <div class="center">
+            <img src="../img/QBE.png" alt="Image de l'interface QBE de Kexi.">
+            </div>
+            <h3 id="2_2" class="center">L'interface QBE de Kexi.</h3>
+            <br>
+            <h3 >Exemples</h3>
+            <p>Nous avons remarqué qu'un fournisseur qui s'appelle <i>"Marie Delamare"</i> apparait dans la base de données. Nous avons donc voulu connaître l'adresse de ce fournisseur. A l'aide de l'application Access, nous avons trouvé que l'adresse du fournisseur <strong>Marie Delamare</strong> est 22, rue H. Voiron.</p>
+            <br>
+            <p>Pour aller plus loin, nous nous sommes posé la question suivante: "Quels produits (nom, catégorie et prix) a commandé le client <strong>Mikal Pavbo</strong> ?" </p>
+            <p>Et nous avons extrait ces informations, à l'aide du QBE:</p>
+            <br>
+            <table>
+                <thead>
+                <tr>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Catégorie</th>
+                    <th scope="col">Prix</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">Boston Crab Meat </th>
+                    <td>8</td>
+                    <td>15,33</td>
+                </tr>
+                <tr>
+                    <th scope="row">NuNuCa Nuß-Nougat-Crème  </th>
+                    <td>3</td>
+                    <td>11,67</td>
+                </tr>
+                <tr>
+                    <th scope="row">Raclette Courdavault  </th>
+                    <td>4</td>
+                    <td>31,46</td>
+                </tr>
+                <tr>
+                    <th scope="row">Wimmers gute Semmelknödel  </th>
+                    <td>5</td>
+                    <td>27,71</td>
+                </tr>
+                </tbody>
+            </table>
+            <h3 id="2_3">Un probleme se pose</h3>
+            <p>Mais un probleme va vite s'imposer. Nous nous sommes demandé s'il y a, dans la clientèle, des clients qui n'ont pas passé de commande.</p>
+            <p>On a malgré tout réussi à répondre à cette question, <br>voici la liste des clients qui n'ont pas passé de
+                commande : ATAUG, AUBBA, CONTIG, GOURL, GOUTA, HOTLA.
+            </p>
+            <p>Mais il était compliqué de répondre à cette question car il fallait comparer la liste des
+                clients et la liste des commandes. Les erreurs sont simples à faire avec cette
+                méthode.
+            </p>
+            <br>
+            <p>C'est à ce moment qu'on a compris que la base de données n'est pas parfaite. <br>
+                On peut voir que dans la table Fournisseur des pays ont des noms différents
+                d'un enregistrement à un autre, par exemple les États-Unis ont été écrits de trois
+                manières différentes : “Etats Unis”, “Etats-Unis” et “USA”, ce qui peut rendre
+                compliqué la recherche.
+                Il y a des cases vides dans plusieurs colonnes, ce qui n'est pas possible
+                normalement dans une base de données.
+                Les formats des numéros de téléphone sont tous différents, certains ont le
+                code des pays et d'autres non.
+                Dans la table clientèle, les noms des villes sont écrits à chaque
+                enregistrement et donc des fois ils sont mal écrits, certaines villes ont des
+                majuscules et des fois non, d'autres des tirets ou pas.
+                La fonction des Fournisseurs peut aussi être mal orthographiée sur certains
+                enregistrements.
+                Dans quantité par unité, il y a plein d'unités différentes, ce qui peut porter à
+                confusion</p>
+            <br>
+            <p>Nous pouvons donc améliorer l'organisation des données en instaurant une
+                cohérence entre les tableaux. Pour ce faire, nous pouvons utiliser l'application
+                Access. Ainsi, les données seront liées entre elles,et il n'y aura aucun
+                problème si on efface, supprime ou ajoute des clients ou produits. Il faut aussi
+                créer de nouvelles tables pour les pays ou pour les méthodes de
+                conditionnement. Il faut aussi mettre en place des conventions de nommages
+                pour les addresses et les numéros de téléphone.
+            </p>
+            <br>
+            <h2 id="3">Conclusion</h2>
+            <br>
+            <p>Pour KDou, nous recommandons d'utiliser l'application Access au lieu de
+                Excel pour une meilleure organisation des données et pour éviter les erreurs.
+                De plus, en optimisant l'accès aux données, le temps de travail s'en verra
+                réduit et par conséquent, la consommation électrique sera réduite, ce qui
+                limitera la pollution et le coût. Ainsi, l'entreprise fera des
+                économies budgétaires tout en étant plus “éco-friendly”.</p>
+            <p>En revanche, l'utilisation d'Access, ou plus généralement d'une base de données, nécessite une certaine rigeur. Ainsi, notre équipe peut aider KDOU à mieux organiser leurs informations pour que la base de données reste cohérente dans tous les cas possibles.</p>
+        </main>
+    </div>
+    <footer>
+        <p>© 2024 - SAE S1.04</p>
+        <p>Équipe : Mohamed, Julien, Romain, Enzo</p>
+        <a id="contact" href="contact.html"><p>Nous contacter</p></a>
+    </footer>
+
+</body>
+</html>

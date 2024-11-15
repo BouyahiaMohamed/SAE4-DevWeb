@@ -1,0 +1,573 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet"  href="style.css">
+    <link rel="icon" type="image/x-icon" href="../img/Favicon.png">
+    <title>Mission 2</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <button onclick="window.location.href='home.html'"> <img src="../img/maison.png" alt="home" class = "home"> </button>
+            <button onclick="window.location.href='mission1.html'"> Mission 1 </button>
+            <button onclick="window.location.href='mission2.html'"> Mission 2 </button>
+            <button onclick="window.location.href='mission3.html'"> Mission 3 </button>
+            <button onclick="window.location.href='conclusion.html'"> Conclusion </button>
+        </nav>
+    </header>
+
+
+<div class="sommaire-contenu">
+    <aside>
+        <h2>Sommaire</h2>
+        <ul>
+            <li><a href="#1">Introduction</a></li>
+            <li><a href="#2">Différents indicateurs</a>
+                <ul>
+                    <li><a href="#2_1">Premier indicateur</a></li>
+                    <li><a href="#2_2">Deuxième indicateur</a></li>
+                    <li><a href="#2_3">Troisième indicateur</a></li>
+                    <li><a href="#2_4">Quatrième indicateur</a></li>
+                </ul>
+            </li>
+            <li><a href="#3">Conclusion</a></li>
+        </ul>
+    </aside>
+<main>
+    <h1 id="1" class="center">Mission 2</h1>
+    <hr>
+    <br>
+    <article>
+        <h2>Introduction</h2>
+        <br>
+        <p>L'entreprise KDou nous a donné accès à sa base de données low code (ici nous avons pu avoir accès à leur fichier Access)</p>
+        <p>Nous avons donc pu formuler des requêtes afin de les aider et de mieux connaître leur clientèle, leurs besoins et donc aider KDou économiquement. </p>
+        <p id="2">Nous allons vous présenter plusieurs indicateurs pour voir comment nous avons pu aider KDou à l'aide de la base de données fournie :</p>
+        <br>
+        <br id="2_1">
+        <h2>Différents indicateurs : </h2>
+        <br>
+        <h4>Nous allons faire une requête qui va nous montrer les produits d'Italie et d'Allemagne qui sont vendues 50€ ou moins. On affichera noms et prix, nom du fournisseur, ville et pays d'origine.</h4>
+        <p>Cette requête va nous permettre de savoir quels sont les produits Allemands et Italiens les moins chers afin de potentiellement les mettre en avant pour permettre à certains clients de tester des produits pour un prix abordable.</p>
+        <p>Voici le code SQL : </p>
+        <pre>SELECT Fournisseur.Societe, Produit.PrixUnit, Fournisseur.Contact, Fournisseur.Ville, Fournisseur.Pays
+FROM Fournisseur INNER JOIN Produit ON Fournisseur.NoFour = Produit.NoFour
+WHERE (((Produit.PrixUnit)&lt;=50) AND ((Fournisseur.Pays)="Italie" Or (Fournisseur.Pays)="Allemagne"));</pre>
+        <br>
+        <table>
+            <tr>
+                <th>Entreprise</th>
+                <th>Montant</th>
+                <th>Contact</th>
+                <th>Ville</th>
+                <th>Pays</th>
+            </tr>
+            <tr>
+                <td>Plusspar Lebensmittelgroßmärkte AG</td>
+                <td>17,50 €</td>
+                <td>Maric Bein</td>
+                <td>Frankfurt</td>
+                <td>Allemagne</td>
+            </tr>
+            <tr>
+                <td>Heli Süßwaren GmbH & Co. KG</td>
+                <td>11,67 €</td>
+                <td>Petra Winkler</td>
+                <td>Berlin</td>
+                <td>Allemagne</td>
+            </tr>
+            <tr>
+                <td>Heli Süßwaren GmbH & Co. KG</td>
+                <td>26,03 €</td>
+                <td>Petra Winkler</td>
+                <td>Berlin</td>
+                <td>Allemagne</td>
+            </tr>
+            <tr>
+                <td>Heli Süßwaren GmbH & Co. KG</td>
+                <td>36,58 €</td>
+                <td>Petra Winkler</td>
+                <td>Berlin</td>
+                <td>Allemagne</td>
+            </tr>
+            <tr>
+                <td>Plusspar Lebensmittelgroßmärkte AG</td>
+                <td>38,00 €</td>
+                <td>Maric Bein</td>
+                <td>Frankfurt</td>
+                <td>Allemagne</td>
+            </tr>
+            <tr>
+                <td>Nord-Ost-Fisch Handelsgesellschaft mbH</td>
+                <td>21,58 €</td>
+                <td>Sven Petersen</td>
+                <td>Cuxhaven</td>
+                <td>Allemagne</td>
+            </tr>
+            <tr>
+                <td>Formaggi Fortini s.r.l.</td>
+                <td>10,42 €</td>
+                <td>Elio Rossi</td>
+                <td>Ravenna</td>
+                <td>Italie</td>
+            </tr>
+            <tr>
+                <td>Formaggi Fortini s.r.l.</td>
+                <td>26,67 €</td>
+                <td>Elio Rossi</td>
+                <td>Ravenna</td>
+                <td>Italie</td>
+            </tr>
+            <tr>
+                <td>Nord-Ost-Fisch Handelsgesellschaft mbH</td>
+                <td>11,67 €</td>
+                <td>Sven Petersen</td>
+                <td>Cuxhaven</td>
+                <td>Allemagne</td>
+            </tr>
+            <tr>
+                <td>Pasta Buttini s.r.l.</td>
+                <td>31,67 €</td>
+                <td>Giovanni Giudici</td>
+                <td>Salerno</td>
+                <td>Italie</td>
+            </tr>
+            <tr>
+                <td>Pasta Buttini s.r.l.</td>
+                <td>16,25 €</td>
+                <td>Giovanni Giudici</td>
+                <td>Salerno</td>
+                <td>Italie</td>
+            </tr>
+            <tr>
+                <td>Plusspar Lebensmittelgroßmärkte AG</td>
+                <td>27,71 €</td>
+                <td>Maric Bein</td>
+                <td>Frankfurt</td>
+                <td>Allemagne</td>
+            </tr>
+            <tr>
+                <td>Formaggi Fortini s.r.l.</td>
+                <td>29,00 €</td>
+                <td>Elio Rossi</td>
+                <td>Ravenna</td>
+                <td  id="2_2">Italie</td>
+            </tr>
+            <tr>
+                <td>Plusspar Lebensmittelgroßmärkte AG</td>
+                <td>10,83 €</td>
+                <td>Maric Bein</td>
+                <td>Frankfurt</td>
+                <td>Allemagne</td>
+            </tr>
+        </table>
+
+        <br>
+        <h4>Nous allons rechercher quels produits (donc les noms, catégories et prix) qu'a commandé le client Mikal Pavbo</h4>
+        <p>Cette requête nous permet de savoir ce qu'à commandé un client et donc de potentiellement lui demander des retours sur ces produits ou alors de lui reproposer ces mêmes produits à l'avenir pour permettre de créer un lien avec le client. </p>
+        <p>Voici le code SQL : </p>
+        <pre>SELECT DISTINCT Commande.CodeCli, Produit.CodeCateg, Produit.NomProd, Produit.PrixUnit
+FROM Produit INNER JOIN (Commande INNER JOIN DetailCommande ON Commande.NoCom = DetailCommande.NoCom) ON Produit.RefProd = DetailCommande.RefProd
+WHERE (((Commande.CodeCli)="PAVBO"));</pre>
+        <br>
+        <table>
+            <tr>
+                <th>CodeCli</th>
+                <th>CodeCateg</th>
+                <th>NomProd</th>
+                <th>PrixUnit</th>
+            </tr>
+            <tr>
+                <td>PAVBO</td>
+                <td>1</td>
+                <td>Chai</td>
+                <td>27,50 €</td>
+            </tr>
+            <tr>
+                <td>PAVBO</td>
+                <td>1</td>
+                <td>Chartreuse verte</td>
+                <td>15,00 €</td>
+            </tr>
+            <tr>
+                <td>PAVBO</td>
+                <td>1</td>
+                <td>Guaraná Fantástica</td>
+                <td>13,45 €</td>
+            </tr>
+            <tr>
+                <td>PAVBO</td>
+                <td>1</td>
+                <td>Ipoh Coffee</td>
+                <td>38,33 €</td>
+            </tr>
+            <tr>
+                <td>PAVBO</td>
+                <td>1</td>
+                <td>Lakkalikööri</td>
+                <td>15,00 €</td>
+            </tr>
+            <tr>
+                <td>PAVBO</td>
+                <td>1</td>
+                <td>Outback Lager</td>
+                <td>15,00 €</td>
+            </tr>
+            <tr>
+                <td>PAVBO</td>
+                <td>1</td>
+                <td>Steeleye Stout</td>
+                <td>215,00 €</td>
+            </tr>
+            <tr>
+                <td>PAVBO</td>
+                <td>2</td>
+                <td>Aniseed Syrup</td>
+                <td>9,17 €</td>
+            </tr>
+            <tr>
+                <td>PAVBO</td>
+                <td>2</td>
+                <td>Chef Anton's Cajun Seasoning</td>
+                <td>18,33 €</td>
+            </tr>
+            <tr>
+                <td>PAVBO</td>
+                <td>2</td>
+                <td>Maple Syrup</td>
+                <td>27,45 €</td>
+            </tr>
+            <tr>
+                <td>PAVBO</td>
+                <td>2</td>
+                <td>Northwoods Cranberry Sauce</td>
+                <td>33,75 €</td>
+            </tr>
+            <tr>
+                <td>PAVBO</td>
+                <td>2</td>
+                <td>Original Frankfurter grüne Soße</td>
+                <td>10,83 €</td></tr>
+            <tr>
+                <td>PAVBO</td>
+                <td>3</td>
+                <td>Vegie-spread</td>
+                <td>36,58 €</td>
+            </tr>
+            <tr>
+                <td>PAVBO</td>
+                <td>3</td>
+                <td>Gumbär Gummibärchen</td>
+                <td>26,03 €</td>
+            </tr>
+            <tr>
+                <td>PAVBO</td>
+                <td>3</td>
+                <td>Maxilaku</td>
+                <td>16,67 €</td>
+            </tr>
+            <tr>
+                <td>PAVBO</td>
+                <td>3</td>
+                <td>NuNuCa Nuß-Nougat-Creme</td>
+                <td>11,67 €</td>
+            </tr>
+            <tr>
+                <td>PAVBO</td>
+                <td>3</td>
+                <td>Pavlova</td>
+                <td>13,84 €</td>
+            </tr>
+            <tr>
+                <td>PAVBO</td>
+                <td>3</td>
+                <td>Sugar Pie</td>
+                <td>41,08 €</td>
+            </tr>
+            <tr>
+                <td>PAVBO</td>
+                <td>4</td>
+                <td>Fløtemysost</td>
+                <td>17,92 €</td>
+            </tr>
+            <tr>
+                <td>PAVBO</td>
+                <td>4</td>
+                <td>Geitost</td>
+                <td>2,08 €</td>
+            </tr>
+            <tr>
+                <td>PAVBO</td>
+                <td>4</td>
+                <td>Gorgonzola Telino</td>
+                <td>12,50 €</td>
+            </tr>
+            <tr>
+                <td>PAVBO</td>
+                <td>4</td>
+                <td>Mozzarella di Giovanni</td>
+                <td>29,00 €</td>
+            </tr>
+            <tr>
+                <td>PAVBO</td>
+                <td>4</td>
+                <td>Raclette Courdavault</td>
+                <td>55,00 €</td>
+            </tr>
+            <tr>
+                <td>PAVBO</td>
+                <td>5</td>
+                <td>Filo Mix</td>
+                <td>53,68 €</td>
+            </tr>
+            <tr>
+                <td>PAVBO</td>
+                <td>5</td>
+                <td>Gnocchi di nonna Alice</td>
+                <td>38,54 €</td>
+            </tr>
+            <tr>
+                <td>PAVBO</td>
+                <td>5</td>
+                <td>Singaporean Hokkien Fried Mee</td>
+                <td>11,67 €</td>
+            </tr>
+            <tr>
+                <td>PAVBO</td>
+                <td>5</td>
+                <td>Wimmers gute Semmelknödel</td>
+                <td>27,71 €</td>
+            </tr>
+            <tr>
+                <td>PAVBO</td>
+                <td>6</td>
+                <td>Perth Pasties</td>
+                <td>32,36 €</td>
+            </tr>
+            <tr>
+                <td>PAVBO</td>
+                <td>6</td>
+                <td>Thüringer Rostbratwurst</td>
+                <td>103,16 €</td>
+            </tr>
+            <tr>
+                <td>PAVBO</td>
+                <td>7</td>
+                <td>Uncle Bob's Organic Dried Pears</td>
+                <td>25,00 €</td>
+            </tr>
+            <tr>
+                <td>PAVBO</td>
+                <td>8</td>
+                <td>Boston Crab Meat</td>
+                <td>15,33 €</td>
+            </tr>
+            <tr>
+                <td>PAVBO</td>
+                <td>8</td>
+                <td>Carnarvon Tigers</td>
+                <td>50,35 €</td>
+            </tr>
+            <tr>
+                <td>PAVBO</td>
+                <td>8</td>
+                <td>Konbu</td>
+                <td id = "2_3">5,00 €</td>
+            </tr>
+            <tr>
+                <td>PAVBO</td>
+                <td>8</td>
+                <td>Rød Kaviar</td>
+                <td>12,50 €</td>
+            </tr>
+        </table>
+        <br>
+        <h4>Nous allons chercher à connaître quels sont les produits conditionnés dans du carton ou dans du verre</h4>
+        <p>Cette requête nous permet d'avoir une meilleur visibilité pour la question de l'écologie, qui permettra à KDou de promouvoir certains produits écoresponsable afin de donner une meilleure image de marque et potentiellement toucher plus de client.</p>
+        <p>Voici le code SQL : </p>
+        <pre>SELECT DISTINCT Produit.NomProd, Produit.QteParUnite
+FROM Produit
+WHERE (((Produit.QteParUnite) Like "carton" Or (Produit.QteParUnite) Like "verre"));</pre>
+        <br>
+        <table>
+            <tr>
+                <th>NomProd</th>
+                <th>QteParUnite</th>
+            </tr>
+            <tr>
+                <td>Carnarvon Tigers</td>
+                <td>1 carton (16 kg)</td>
+            </tr>
+            <tr>
+            <td>Chocolade</td><td>10 cartons</td>
+            </tr>
+            <tr>
+            <td>Fløtemysost</td>
+                <td>10 cartons (500 g)</td>
+        </tr>
+            <tr>
+            <td>Gnocchi di nonna Alice</td>
+                <td>5 cartons (250 g)</td>
+        </tr>
+            <tr>
+            <td>Gorgonzola Telino</td>
+                <td>1 carton (100 g)</td>
+        </tr>
+            <tr>
+            <td>Gravad lax</td>
+                <td>12 cartons (500 g)</td>
+        </tr>
+            <tr>
+            <td>Gudbrandsdalsost</td>
+                <td>1 carton (10 kg)</td>
+        </tr>
+            <tr>
+            <td>Gustaf's Knäckebröd</td>
+                <td>1 carton (500 g)</td>
+        </tr>
+            <tr>
+            <td>knäckebröd Kala</td>
+                <td>10 cartons (250 g)</td>
+        </tr>
+            <tr>
+            <td>Longlife Tofu</td>
+                <td>5 cartons (5 kg)</td>
+        </tr>
+            <tr>
+            <td>Mascaporne Fabioli</td>
+                <td>24 cartons (200 g)</td>
+        </tr>
+            <tr>
+            <td>Maxilaku</td>
+                <td>1 carton (24 g)</td>
+        </tr>
+            <tr>
+            <td>Mishi Kobe Niku</td>
+                <td>18 cartons (500 g)</td>
+        </tr>
+            <tr>
+            <td>Mozzarella di Giovanni</td>
+                <td>1 carton (200 g)</td>
+        </tr>
+            <tr>
+            <td>Nord-Ost Matjeshering</td>
+                <td>10 verres (200 g)</td>
+        </tr>
+            <tr>
+            <td>NuNuCa Nuß-Nougat-Creme</td>
+                <td>20 verres (450 g)</td>
+        </tr>
+            <tr>
+            <td>Queso Cabrales</td>
+                <td>1 carton (1kg)</td>
+        </tr>
+            <tr>
+            <td>Queso Manchego La Pastora</td>
+                <td>5 cartons (500 g)</td>
+        </tr>
+            <tr>
+            <td>Raclette Courdavault</td>
+                <td>5 cartons (5 kg)</td>
+        </tr>
+            <tr>
+            <td>Ravioli Angelo</td>
+                <td>24 cartons (250 g)</td>
+        </tr>
+            <tr>
+            <td>Røgede sild</td>
+                <td>1 carton (1kg)</td>
+        </tr>
+            <tr>
+            <td>Singaporean Hokkien Fried Mee</td>
+                <td>1 carton (1 kg)</td>
+        </tr>
+            <tr>
+            <td>Spegesild</td>
+                <td>4 verres (450 g)</td>
+        </tr>
+            <tr>
+            <td>Tofu</td>
+                <td>1 carton (100 g)</td>
+        </tr>
+            <tr>
+            <td>Tunnbröd</td>
+                <td>12 cartons (250 g)</td>
+        </tr>
+            <tr>
+            <td>Uncle Bob's Organic Dried Pears</td>
+                <td>12 cartons (1 livre)</td>
+        </tr>
+        </table>
+
+
+        <br>
+        <h4 id = "2_4">Nous allons chercher pour chaque fournisseur combien de produits ils proposent en bouteille</h4>
+        <p>Cette requête va nous permettre de voir quels fournisseurs utilisent le plus de stockage en bouteille et donc de pouvoir les mettre en avant pour des commerces qui ont besoin de produits en bouteille (comme par exemple des magasins bio)</p>
+        <p>Voici le code SQL : </p>
+        <pre>SELECT DISTINCT Fournisseur.Contact, COUNT(Produit.QteParUnite)
+FROM Fournisseur INNER JOIN Produit ON Fournisseur.NoFour = Produit.NoFour
+WHERE (((Produit.QteParUnite) Like "bouteilles"))
+GROUP BY Fournisseur.Contact;</pre>
+        <br>
+        <table>
+            <tr>
+                <th>Contact</th>
+                <th>Expr1001</th>
+            </tr>
+            <tr>
+                <td>Alyssa Messata</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>Chantal Goulet</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>Cheryl Saylor</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>Claudio Sole</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>Guylène Nodier</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>Helena Carbo</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>Ian Devling</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>Maric Bein</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>Shelley Burke</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>Wendy Mackenzie</td>
+                <td>1</td>
+            </tr>
+        </table>
+        <br>
+        <h2 id = "3">Conclusion</h2>
+        <br>
+        <p>KDou a donc la possibilité à travers ces indicateurs de faire évoluer son marché et de pouvoir cibler quels clients peut être interessé par quel produit. C'est donc pour cela que l'utilisation de la base de données est importante pour KDou elle permet de fidéliser et agrandir sa clientèle</p>
+    </article>
+    </main>
+</div>
+    <footer>
+        <p>© 2024 - SAE S1.04</p>
+        <p>Équipe : Mohamed, Julien, Romain, Enzo</p>
+        <a id="contact" href="contact.html"><p>Nous contacter</p></a>
+    </footer>
+</body>
+</html>
